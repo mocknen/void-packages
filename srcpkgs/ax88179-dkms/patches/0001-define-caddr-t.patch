@@ -1,0 +1,12 @@
+diff --git a/ax_ioctl.h b/ax_ioctl.h
+index f8321dd..ba35a9f 100755
+--- a/ax_ioctl.h
++++ b/ax_ioctl.h
+@@ -17,6 +17,7 @@
+ #ifndef __ASIX_IOCTL_H
+ #define __ASIX_IOCTL_H
+ 
++#define caddr_t void *
+ #ifdef ENABLE_IOCTL_DEBUG
+ #define DEBUG_PRINT(fmt, args...) printf(fmt, ## args)
+ #define DEBUG_PRINTK(fmt, args...) printk(fmt, ## args)

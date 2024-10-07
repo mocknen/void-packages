@@ -1,0 +1,29 @@
+# Template file for 'ax88179-dkms'
+pkgname=ax88179-dkms
+version=3.3.0
+revision=1
+depends=dkms
+short_desc='ASIX AX88179 USB 3.0 to Gigabit Ethernet driver (DKMS)'
+maintainer='Shogo Yamazaki <void-packages@mocknen.net>'
+license=GPL-2.0-only
+homepage=https://www.asix.com.tw/en/product/USBEthernet/Super-Speed_USB_Ethernet/AX88179B
+distfiles='https://www.asix.com.tw/en/support/download/file/1800>asix_usb_nic_linux_driver_v3.3.0.tar.bz2'
+checksum=09c4de9a39631e810d9100904941700ccf7da5fc4702beda0c88fa90ca7fd076
+dkms_modules="$pkgname $version"
+
+do_install() {
+    cp "$FILESDIR"/dkms.conf .
+    vsed -i dkms.conf \
+         -e s/@PKGVER@/$version/ \
+         -e s/@PKGNAME@/${pkgname%-dkms}/
+
+    for f in ax*.c \
+             ax*.h \
+             Makefile \
+             Readme \
+             dkms.conf; do
+        vinstall "$f" 644 usr/src/$pkgname-$version
+    done
+
+    vinstall "$FILESDIR"/modprobe.conf 644 usr/lib/modprobe.d $pkgname.conf
+}
