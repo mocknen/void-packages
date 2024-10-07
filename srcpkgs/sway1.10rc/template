@@ -1,0 +1,23 @@
+# Template file for 'sway1.10rc'
+pkgname=sway1.10rc
+conflicts=sway
+version=2
+revision=1
+build_style=meson
+configure_args=-Dwerror=false
+conf_files=/etc/sway/config
+hostmakedepends='pkg-config scdoc wayland-devel'
+makedepends='cairo-devel gdk-pixbuf-devel json-c-devel libevdev-devel
+ pango-devel pcre2-devel wlroots0.18-devel'
+depends='libcap-progs libxkbcommon swaybg wlroots0.18 xorg-server-xwayland'
+short_desc='Tiling Wayland compositor compatible with i3'
+maintainer='Shogo Yamazaki <void-packages@mocknen.net>'
+license=MIT
+homepage=https://swaywm.org
+changelog=https://github.com/swaywm/sway/releases
+distfiles=https://github.com/swaywm/sway/releases/download/1.10-rc$version/sway-1.10-rc$version.tar.gz
+checksum=bb97a4459fd930fe65b3f2d42a2e1405db1f88f2f529c5de4794c0ad4f42e34c
+
+post_install() {
+    vlicense LICENSE
+}
