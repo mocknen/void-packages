@@ -1,0 +1,48 @@
+# Template file for 'Waybar-git'
+pkgname=Waybar-git
+version=0.11.0.r51.g280f11e
+_commit=${version##*.g}247bc264541bb7daa01ffcce9fe6721a1
+revision=1
+license=MIT
+homepage=https://github.com/Alexays/Waybar
+short_desc='Polybar-like Wayland Bar for Sway and Wlroots based compositors'
+maintainer='Shogo Yamazaki <void-packages@mocknen.net>'
+conflicts=Waybar
+distfiles=https://github.com/Alexays/Waybar/archive/$_commit.tar.gz
+checksum=ff431bcff97016adffbc3870c62cb82c5389d716b3284608b7407ebd12e5c242
+conf_files='/etc/xdg/waybar/config.jsonc /etc/xdg/waybar/style.css'
+build_style=meson
+configure_args="-Dlibudev=enabled -Dman-pages=enabled
+ -Dsystemd=disabled -Drfkill=enabled
+ $(vopt_feature dbusmenugtk dbusmenu-gtk)
+ $(vopt_feature jack jack)
+ $(vopt_feature libnl libnl)
+ $(vopt_feature mpd mpd)
+ $(vopt_feature pipewire wireplumber)
+ $(vopt_feature pulseaudio pulseaudio)
+ $(vopt_feature sndio sndio)"
+hostmakedepends="cmake pkg-config glib-devel wayland-devel scdoc
+ $(vopt_if dbusmenugtk gobject-introspection)"
+makedepends="chrono-date-devel eudev-libudev-devel fmt-devel
+ gtk-layer-shell-devel gtkmm-devel jsoncpp-devel libevdev-devel libglib-devel
+ libinput-devel libsigc++-devel playerctl-devel spdlog upower-devel
+ wayland-devel
+ $(vopt_if dbusmenugtk libdbusmenu-gtk3-devel)
+ $(vopt_if jack jack-devel)
+ $(vopt_if libnl libnl3-devel)
+ $(vopt_if mpd libmpdclient-devel)
+ $(vopt_if pipewire 'wireplumber-devel pipewire-devel')
+ $(vopt_if pulseaudio pulseaudio-devel)
+ $(vopt_if sndio sndio-devel)"
+
+build_options='dbusmenugtk jack libnl mpd pipewire pulseaudio sndio'
+build_options_default=$build_options
+
+desc_option_dbusmenugtk='Enable support for tray'
+desc_option_libnl='Enable libnl support for network related features'
+desc_option_mpd='Enable support for MPD'
+desc_option_pipewire='Enable support for pipewire related features'
+
+post_install() {
+	vlicense LICENSE
+}
