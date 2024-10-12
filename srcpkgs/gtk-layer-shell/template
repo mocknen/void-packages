@@ -1,6 +1,6 @@
 # Template file for 'gtk-layer-shell'
 pkgname=gtk-layer-shell
-version=0.8.2
+version=0.9.0
 revision=1
 build_style=meson
 build_helper="gir"
@@ -8,12 +8,12 @@ hostmakedepends="gobject-introspection pkg-config wayland-devel"
 makedepends="gtk+3-devel wayland-devel"
 checkdepends="cantarell-fonts xvfb-run"
 short_desc="Library to create panels and other desktop components for Wayland"
-maintainer="travankor <travankor@tuta.io>"
+maintainer="Shogo Yamazaki <void-packages@mocknen.net>"
 license="LGPL-3.0-or-later, MIT"
 homepage="https://github.com/wmww/gtk-layer-shell"
 changelog="https://raw.githubusercontent.com/wmww/gtk-layer-shell/master/CHANGELOG.md"
 distfiles="https://github.com/wmww/gtk-layer-shell/archive/refs/tags/v${version}.tar.gz"
-checksum=254dd246303127c5d5236ea640f01a82e35d2d652a48d139dd669c832a0f0dce
+checksum=3809e5565d9ed02e44bb73787ff218523e8760fef65830afe60ea7322e22da1c
 make_check_pre="xvfb-run"
 
 if [ "$XBPS_CHECK_PKGS" ]; then
