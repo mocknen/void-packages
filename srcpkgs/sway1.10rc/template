@@ -1,7 +1,7 @@
 # Template file for 'sway1.10rc'
 pkgname=sway1.10rc
 conflicts=sway
-version=2
+version=3
 revision=1
 build_style=meson
 configure_args=-Dwerror=false
@@ -16,7 +16,7 @@ license=MIT
 homepage=https://swaywm.org
 changelog=https://github.com/swaywm/sway/releases
 distfiles=https://github.com/swaywm/sway/releases/download/1.10-rc$version/sway-1.10-rc$version.tar.gz
-checksum=bb97a4459fd930fe65b3f2d42a2e1405db1f88f2f529c5de4794c0ad4f42e34c
+checksum=d1ae419b8b18725f2ca37663e1678f7d1c0022d08a3f46e5f756979c47cb5fd5
 
 post_install() {
     vlicense LICENSE
