@@ -2,7 +2,7 @@
 pkgname=Waybar-git
 version=0.11.0.r51.g280f11e
 _commit=${version##*.g}247bc264541bb7daa01ffcce9fe6721a1
-revision=1
+revision=2
 license=MIT
 homepage=https://github.com/Alexays/Waybar
 short_desc='Polybar-like Wayland Bar for Sway and Wlroots based compositors'
